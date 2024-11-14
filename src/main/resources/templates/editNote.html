@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Note</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+<body>
+
+<header>
+    <div class="nav-links">
+        <a th:href="@{/}" class="btn">Dashboard</a>
+        <a th:href="@{/logout}" class="btn login">Logout</a>
+    </div>
+</header>
+
+<main>
+    <form th:action="@{/note/edit/{id}(id=${note.id})}" th:method="post">
+        <h1>Edit Note</h1>
+        
+        <input type="text" name="name" th:value="${note.name}" placeholder="Note Title" required />
+        
+        <div id="editor-container" style="height: 300px; width: 100%;">
+            <p th:utext="${note.content}"></p> <!-- Quill editor initializes with this content -->
+        </div>
+        <input type="hidden" name="content" id="hidden-content">
+
+        <button type="submit">Save</button>
+    </form>
+</main>
+
+<footer>
+    <p>&copy; 2024 InShare</p>
+</footer>
+<script>
+    var quill = new Quill('#editor-container', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                ['bold', 'italic', 'underline'],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                [{ 'size': ['small', false, 'large', 'huge'] }],
+                ['link']
+            ]
+        }
+    });
+
+    // Sync content with hidden input before submitting form
+    document.querySelector('form').onsubmit = function() {
+        document.querySelector('#hidden-content').value = quill.root.innerHTML;
+    };
+</script>
+</body>
+</html>

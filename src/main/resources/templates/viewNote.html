@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Note - InShare</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <header>
+        <div class="nav-links">
+            <a th:href="@{/}" class="btn">Dashboard</a>
+            <a class="btn register" href="/logout">Logout</a>
+        </div>
+    </header>
+    <main class="note-view">
+        <h1 th:text="${note.name}">Note Title</h1>
+        <p th:text="'Created: ' + ${#dates.format(note.created, 'dd MMM yyyy, HH:mm')}"></p>
+        <p th:text="'Author: ' + ${note.author.username}"></p>
+        <div class="note-content">
+            <p th:utext="${note.content}"></p>
+        </div>
+    </main>
+</body>
+</html>
+

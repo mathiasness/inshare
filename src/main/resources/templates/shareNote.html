@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Share Note - InShare</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <form th:action="@{/note/share}" method="post">
+        <input type="hidden" name="noteId" th:value="${note.id}" />
+    
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="role">Select Role:</label>
+            <select id="role" name="role" required>
+                <option value="OWNER" th:if="${isOwner}">Owner (transfer ownership)</option>
+                <option value="ADMINISTRATOR">Administrator</option>
+                <option value="EDITOR">Editor</option>
+                <option value="READER">Reader</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <button type="submit">Share Note</button>
+        </div>
+    </form>
+</body>
+</html>
+

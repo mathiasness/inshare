@@ -1,0 +1,431 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #3482e9;
+    --secondary: #6de491;
+    --text: #333;
+    --text-discrete: #B0B0B0;
+    --card-bg-values: 250,250,250;
+    --card-bg: rgba(var(--card-bg-values),1);
+    --card-bg-transparent: rgba(var(--card-bg-values),0);
+    --card-shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f7fa;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-links .btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    margin-left: 15px;
+    border: 2px solid white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links .btn:hover {
+    background-color: white;
+    color: var(--primary);
+}
+
+.login {
+    color: white;
+}
+
+.register {
+    background-color: white;
+    color: var(--primary);
+}
+
+.register:hover {
+    background-color: white;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero {
+    max-width: 800px;
+}
+
+.slogan {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.features {
+    list-style-type: none;
+}
+
+.features li {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+footer {
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+main.note-view {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: unset;
+    margin-top: 3em;
+    text-align: left;
+}
+
+main.dashboard {
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.note-grid {
+    display: grid;
+    padding: 1em;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.note-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--card-shadow);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    cursor: pointer; /* Add this line */
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+}
+
+.note-header {
+    background-color: var(--primary);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: space-between; /* Space between title and hamburger menu */
+    align-items: center; /* Vertically center the content */
+}
+
+.note-content {
+    padding: 15px;
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+
+.note-preview {
+    padding: 15px;
+    color: var(--text);
+    font-size: 0.9rem;
+    max-height: 10em;
+    overflow: hidden;
+    position: relative;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.note-preview::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3em;
+    background: linear-gradient(to bottom,var(--card-bg-transparent) 0%, var(--card-bg) 100%);
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+/* Form styling */
+form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus {
+    outline: none;
+    border-color: var(--secondary);
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary);
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: var(--secondary);
+    color: var(--text);
+}
+
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    width: 100%;
+    white-space: nowrap; 
+    flex: 1;
+}
+
+
+.permissions-checkboxes {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+    padding: 0;
+}
+.permissions-item {
+    display: flex;
+    gap: 0.3em;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* New Note Card Styling */
+.note-card.create-note {
+    border: 2px dashed var(--secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.note-header.create-header {
+    background-color: var(--secondary);
+}
+
+.note-card.create-note .note-preview.create-content {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--secondary);
+    text-align: center;
+}
+
+/* Optional: style the note title for better alignment */
+.note-title {
+    flex: 1; /* Take up remaining space */
+    cursor: pointer; /* Indicate that the title is clickable */
+    text-align: left; /* Align the title to the left */
+}
+
+/* Menu toggle button */
+.menu-toggle {
+    font-size: 1.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Hamburger Menu Styling */
+
+.menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid var(--primary);
+    box-shadow: 0 4px 8px var(--card-shadow);
+    width: 200px;
+    z-index: 10;
+    border-radius: 5px;
+    padding: 5px 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.menu-info {
+    padding: 10px;
+    border-bottom: 1px solid var(--primary);
+    color: var(--text);
+    font-size: 80%;
+    background-color: var(--card-bg);
+}
+
+.menu-item {
+    padding: 10px;
+    cursor: pointer;
+    color: var(--primary);
+    transition: background-color 0.3s ease;
+    background-color: var(--card-bg);
+}
+
+.menu-item:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.watermark {
+    font-size: 5rem;
+    color: var(--text-discrete)
+}
+
+
+/* Blurred background overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px); /* Blurs the background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+/* Modal content */
+.modal-content {
+    background: #ffffff;
+    padding: 20px;
+    width: 500px;
+    max-width: 90%;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--card-shadow);
+    position: relative;
+}
+
+/* Modal header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Close button */
+.modal-close {
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+/* Modal body for dynamic content */
+.modal-body {
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+}
+
+/* Modal animations */
+.modal-overlay.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content.slide-down {
+    animation: slideDown 0.3s ease-in-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+
+/* Small text size */
+.ql-size-small {
+    font-size: 0.75em;
+    line-height: 1.4;
+}
+
+/* Normal text size (default, no class needed) */
+.ql-size-normal {
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+/* Large text size */
+.ql-size-large {
+    font-size: 1.125em;
+    line-height: 1.7;
+}
+
+
+/* Huge text size */
+.ql-size-huge {
+    font-size: 2em;
+    line-height: 1.9;
+}
